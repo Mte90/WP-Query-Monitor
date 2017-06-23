@@ -1,0 +1,17 @@
+{
+    "name": "WordPress Query Monitor",
+    "version": "0.1.0",
+    "description": "The WordPress plugin Query MoOnitor is better on the browser DevTools, trust me!",
+    "devtools_page": "devpanel.html",
+    "background": {
+        "scripts": [
+            "scripts/background.js"
+        ]
+    },
+    "permissions": [
+        "tabs", 
+        "http://*/*",
+        "https://*/*"
+    ],
+    "manifest_version": 2
+}
