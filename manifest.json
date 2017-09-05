@@ -1,17 +1,20 @@
 {
-    "name": "WordPress Query Monitor",
-    "version": "0.1.0",
-    "description": "The WordPress plugin Query MoOnitor is better on the browser DevTools, trust me!",
-    "devtools_page": "devpanel.html",
-    "background": {
-        "scripts": [
-            "scripts/background.js"
-        ]
-    },
-    "permissions": [
-        "tabs", 
-        "http://*/*",
-        "https://*/*"
-    ],
-    "manifest_version": 2
+  "name": "WordPress Query Monitor",
+  "version": "0.1.0",
+  "manifest_version": 2,
+  "description": "The WordPress plugin Query Monitor is better on the browser DevTools, trust me!",
+  "icons": {
+    "48": "toast.png"
+  },
+  "content_scripts": [
+    {
+      "js": ["devtools/contentscript.js"],
+      "run_at": "document_idle",
+      "matches": ["<all_urls>"]
+    }
+],
+  "permissions": [
+    "<all_urls>"
+  ],
+  "devtools_page": "devtools/devtools-page.html"
 }
