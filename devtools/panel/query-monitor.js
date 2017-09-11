@@ -52,14 +52,14 @@ var QM_i18n = {
 
 function loadQM() {
   
-  $('#qm .qm-filter').on('change', function (e) {
+  $('.qm-filter').on('change', function () {
 	var filter = $(this).attr('data-filter'),
 			table = $(this).closest('table'),
 			tr = table.find('tbody tr[data-qm-' + filter + ']'),
 			val = $(this).val().replace(/[[\]()'"\\]/g, "\\$&"),
 			hilite = $(this).attr('data-highlight'),
 			time = 0;
-
+			
 	if (hilite) {
 	  table.find('tr').removeClass('qm-highlight');
 	}
@@ -85,7 +85,7 @@ function loadQM() {
 	results.find('.qm-items-time').text(time);
   });
 
-  $('#qm .qm-filter-trigger').on('click', function (e) {
+  $('.qm-filter-trigger').on('click', function (e) {
 	var filter = $(this).data('qm-filter'),
 			value = $(this).data('qm-value'),
 			target = $(this).data('qm-target');
@@ -95,7 +95,7 @@ function loadQM() {
 	e.preventDefault();
   });
 
-  $('#qm .qm-toggle').on('click', function (e) {
+  $('.qm-toggle').on('click', function (e) {
 	var el = $(this);
 	$(this).closest('td').find('.qm-toggled').slideToggle(100, function () {
 	  if (el.attr('data-off') === el.text()) {
@@ -109,7 +109,7 @@ function loadQM() {
 	e.preventDefault();
   });
 
-  $('#qm .qm-highlighter').on('mouseenter', function (e) {
+  $('.qm-highlighter').on('mouseenter', function (e) {
 
 	var subject = $(this).data('qm-highlight');
 	var table = $(this).closest('table');

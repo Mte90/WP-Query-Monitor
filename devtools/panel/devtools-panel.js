@@ -6,10 +6,10 @@ jQuery(function ($) {
 	  document.querySelector('#qm').innerHTML = request.message;
 	  loadQM();
 	}
-	if (request.type === "qm-js" && request.message !== '') {
+	/*if (request.type === "qm-js" && request.message !== '') {
 	  var body = document.querySelector('body').innerHTML;
 	  document.querySelector('body').innerHTML = body + request.message;
-	}
+	}*/
   });
 
   function loadagain() {
