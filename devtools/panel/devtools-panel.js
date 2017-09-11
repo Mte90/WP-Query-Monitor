@@ -6,10 +6,11 @@ jQuery(function ($) {
 	  document.querySelector('#qm').innerHTML = request.message;
 	  loadQM();
 	}
-	/*if (request.type === "qm-js" && request.message !== '') {
-	  var body = document.querySelector('body').innerHTML;
-	  document.querySelector('body').innerHTML = body + request.message;
-	}*/
+	if (request.type === "qm-js" && request.var !== '') {
+	  console.log(request.var)
+//	  var body = document.querySelector('body').innerHTML;
+//	  document.querySelector('body').innerHTML = body + request.message;
+	}
   });
 
   function loadagain() {
