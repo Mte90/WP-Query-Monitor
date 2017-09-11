@@ -54,7 +54,7 @@ jQuery( function($) {
 
 	if ( !window.qm )
 		return;
-
+/*
 	var is_admin = $('body').hasClass('wp-admin');
 
 	$('#qm').removeClass('qm-no-js').addClass('qm-js');
@@ -63,7 +63,7 @@ jQuery( function($) {
 
 		var container = document.createDocumentFragment();
 
-		$('#wp-admin-bar-query-monitor')
+		/*$('#wp-admin-bar-query-monitor')
 			.addClass(qm.menu.top.classname)
 			.find('a').eq(0)
 			.html(qm.menu.top.title)
@@ -122,7 +122,6 @@ jQuery( function($) {
 				console.debug( qm_l10n.infinitescroll_paused );
 			}
 
-			$('#qm').addClass('qm-show').removeClass('qm-hide');
 		});
 
 		$('#wp-admin-bar-query-monitor,#wp-admin-bar-query-monitor-default').show();
@@ -147,7 +146,7 @@ jQuery( function($) {
 		$('<ul/>').appendTo('#qm-title').append(container).find('a').on('click',function(e){
 			$('#qm').addClass('qm-show').removeClass('qm-hide qm-peek');
 		} );
-	}
+	}*/
 
 	$('#qm').find('.qm-filter').on('change',function(e){
 
@@ -233,7 +232,7 @@ jQuery( function($) {
 
 	});
 
-	$( document ).ajaxSuccess( function( event, response, options ) {
+	/*$( document ).ajaxSuccess( function( event, response, options ) {
 
 		var errors = response.getResponseHeader( 'X-QM-error-count' );
 
@@ -291,7 +290,7 @@ jQuery( function($) {
 		});
 
 		e.preventDefault();
-	});
+	});*/
 
 	$.qm.tableSort({target: $('.qm-sortable'), debug: false});
 
