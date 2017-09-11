@@ -7,7 +7,12 @@ browser.runtime.onConnect.addListener(function (port) {
 			type: "qm-div",
 			message: qm[0]
 		  });
-		  //browser.tabs.executeScript(request.tabId, {"code": "var qm_ext = document.querySelector(\"#qm\");qm_ext.parentNode.removeChild( qm_ext );"});
+		  browser.tabs.executeScript(request.tabId, {"code": "document.querySelectorAll(\"script:last-child\")[0].outerHTML"}, function (qm) {
+			port.postMessage({
+			  type: "qm-js",
+			  message: qm[0]
+			});
+		  });
 		}
 	  });
 	}
