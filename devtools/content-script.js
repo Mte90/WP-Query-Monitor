@@ -1,3 +1,4 @@
+// Put the var inside an attribute to get from the panel
 function saveWindowVariables() {
   var variables = [window.qm, window.qm_locale];
   for (var i = 0; i < variables.length; i++) {
