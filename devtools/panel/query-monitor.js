@@ -51,6 +51,23 @@ var QM_i18n = {
 };
 
 function loadQM() {
+  var container = document.createDocumentFragment();
+  $.each(window.qm.menu.sub, function (i, el) {
+
+	var new_menu = $('<li><a/></li>');
+	new_menu
+			.find('a').eq(0)
+			.html(el.title)
+			.attr('href', el.href);
+
+	container.appendChild(new_menu.get(0));
+
+  });
+
+  $('<ul/>').appendTo('#qm-title').append(container).find('a').on('click', function (e) {
+	$('#qm').addClass('qm-show').removeClass('qm-hide qm-peek');
+  });
+  
   $('.qm-filter').each(function () {
 	var filter = $(this).attr('data-filter');
 	var value = localStorage.getItem('qm-' + filter);
@@ -58,7 +75,7 @@ function loadQM() {
 	  $(this).val(value).change();
 	}
   });
-  
+
   $('.qm-filter').on('change', function () {
 	var filter = $(this).attr('data-filter'),
 			table = $(this).closest('table'),
@@ -67,7 +84,7 @@ function loadQM() {
 			hilite = $(this).attr('data-highlight'),
 			time = 0;
 	localStorage.setItem('qm-' + filter, $(this).find('option:selected').val());
-	
+
 	tr.removeClass('qm-hide-' + filter);
 	if (hilite) {
 	  table.find('tr').removeClass('qm-highlight');

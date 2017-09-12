@@ -17,9 +17,34 @@ GNU General Public License for more details.
 	background: #f1f1f1 !important;
 	text-align: left !important;
 }
-
-#qm-title {
+	
+#qm-title p {
 	display:none;
+}
+
+#qm-title ul {
+	margin: 10px 10px 0 !important;
+	font-style: normal !important;
+	font-weight: normal !important;
+	font-size: 11px !important;
+	line-height: 16px !important;
+	font-family: Menlo, Monaco, Consolas, monospace !important;
+	list-style: none !important;
+	padding-top:10px;
+}
+
+#qm-title li {
+	display: inline-block !important;
+	width: 16em !important;
+	background: #fff !important;
+	border: 1px solid #e8e8e8 !important;
+	margin: 0 5px 5px 0 !important;
+}
+
+#qm-title li a {
+	display: block !important;
+	padding: 4px 7px !important;
+	font: 13px/15px 'Open Sans', Arial !important;
 }
 
 .qm-half {
