@@ -4,12 +4,8 @@ browser.runtime.onConnect.addListener(function (port) {
 	  browser.tabs.executeScript(request.tabId, {"code": "document.querySelector(\"#qm\").outerHTML;"}, function (qm) {
 		if (typeof qm !== "undefined") {
 		  var url = browser.extension.getURL('devtools/content-script.js');
-		  browser.tabs.executeScript(request.tabId, {"code": "t = document.querySelector(\"script:last-child\");var s = document.createElement(\"script\");s.type = \"text/javascript\";s.src = '" + url + "';t.parentNode.insertBefore(s, t);"});
-		  var vars = retrieveWindowVariables(request);
-		  port.postMessage({
-			type: "qm-div",
-			html: qm[0],
-			vars: vars
+		  browser.tabs.executeScript(request.tabId, {"code": "t = document.querySelector(\"script:last-child\");var s = document.createElement(\"script\");s.type = \"text/javascript\";s.src = '" + url + "';t.parentNode.insertBefore(s, t);"}, function () {
+			retrieveWindowVariables(request, port, qm[0]);
 		  });
 		}
 	  });
@@ -17,17 +13,20 @@ browser.runtime.onConnect.addListener(function (port) {
   });
 });
 
-function retrieveWindowVariables(request) {
+function retrieveWindowVariables(request, port, qm) {
   var ret = {};
   var variables = [window.qm, window.qm_l10n, window.qm_locale];
 
-  for (var i = 0; i < variables.length; i++) {
-	var currVariable = variables[i];
+  variables.forEach(function (item, i) {
 	browser.tabs.executeScript(request.tabId, {"code": "document.querySelector('body').getAttribute('tmp_" + i + "')"}, function (qm_vars) {
-	  ret[currVariable] = qm_vars;
+	  ret[item] = qm_vars;
 	});
 //	$("body").removeAttr("tmp_" + currVariable);
-  }
-
-  return ret;
+  });
+  console.log(ret);
+  port.postMessage({
+	type: "qm-div",
+	html: qm,
+	vars: ret
+  });
 }

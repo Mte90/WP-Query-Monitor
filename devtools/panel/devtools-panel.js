@@ -2,7 +2,6 @@ jQuery(function ($) {
   var port = browser.runtime.connect({name: "wpquery"});
 
   port.onMessage.addListener(function (request, sender) {
-	  console.log(request)
 	if (request.type === "qm-div" && request.html !== '') {
 	  document.querySelector('#qm').innerHTML = request.message;
 	  console.log(request.vars)
