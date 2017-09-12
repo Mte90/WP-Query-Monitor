@@ -51,7 +51,14 @@ var QM_i18n = {
 };
 
 function loadQM() {
-
+  $('.qm-filter').each(function () {
+	var filter = $(this).attr('data-filter');
+	var value = localStorage.getItem('qm-' + filter);
+	if (value !== null) {
+	  $(this).val(value).change();
+	}
+  });
+  
   $('.qm-filter').on('change', function () {
 	var filter = $(this).attr('data-filter'),
 			table = $(this).closest('table'),
@@ -59,6 +66,7 @@ function loadQM() {
 			val = $(this).val().replace(/[[\]()'"\\]/g, "\\$&"),
 			hilite = $(this).attr('data-highlight'),
 			time = 0;
+	localStorage.setItem('qm-' + filter, $(this).find('option:selected').val());
 
 	if (hilite) {
 	  table.find('tr').removeClass('qm-highlight');
