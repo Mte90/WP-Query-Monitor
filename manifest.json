@@ -4,7 +4,7 @@
   "manifest_version": 2,
   "description": "The WordPress plugin Query Monitor is better on the browser DevTools, trust me!",
   "icons": {
-    "48": "toast.png"
+    "48": "icon.png"
   },
 
   "background": {

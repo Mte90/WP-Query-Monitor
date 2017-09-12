@@ -67,7 +67,8 @@ function loadQM() {
 			hilite = $(this).attr('data-highlight'),
 			time = 0;
 	localStorage.setItem('qm-' + filter, $(this).find('option:selected').val());
-
+	
+	tr.removeClass('qm-hide-' + filter);
 	if (hilite) {
 	  table.find('tr').removeClass('qm-highlight');
 	}
