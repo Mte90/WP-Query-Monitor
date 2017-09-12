@@ -1,20 +1,11 @@
 jQuery(function ($) {
   var port = browser.runtime.connect({name: "wpquery"});
-
   port.onMessage.addListener(function (request, sender) {
 	if (request.type === "qm-div" && request.html !== '') {
-	  document.querySelector('#qm').innerHTML = request.message;
-	  console.log(request.vars)
-	  loadQM();
+	  document.querySelector('#qm').innerHTML = request.html;
+	  retrieveWindowVariables();
 	}
-//	if (request.type === "qm-js" && request.var !== '') {
-//	  console.log(request.var)
-////	  var body = document.querySelector('body').innerHTML;
-////	  document.querySelector('body').innerHTML = body + request.message;
-//	}
-
   });
-
   function loadagain() {
 	port.postMessage({
 	  tabId: browser.devtools.inspectedWindow.tabId,
@@ -22,4 +13,15 @@ jQuery(function ($) {
 	});
   }
   loadagain();
+
+  function retrieveWindowVariables() {
+	browser.devtools.inspectedWindow.eval("document.querySelector('body').getAttribute('tmp_0')").then(function (qm_vars) {
+	  window.qm = JSON.parse(qm_vars[0]);
+	  console.log(window.qm)
+	});
+	browser.devtools.inspectedWindow.eval("document.querySelector('body').getAttribute('tmp_1')").then(function (qm_vars) {
+	  window.qm_locale = JSON.parse(qm_vars[0]);
+	  loadQM();
+	});
+  }
 });

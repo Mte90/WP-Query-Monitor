@@ -35,14 +35,14 @@ var QM_i18n = {
 
 	if (num_str.length > 3) {
 	  for (i = num_str.length; i > 3; i -= 3)
-		o = qm_locale.number_format.thousands_sep + num_str.slice(i - 3, i) + o;
+		o = window.qm_locale.number_format.thousands_sep + num_str.slice(i - 3, i) + o;
 	  o = num_str.slice(0, i) + o;
 	} else {
 	  o = num_str;
 	}
 
 	if (decimals)
-	  o = o + qm_locale.number_format.decimal_point + fraction;
+	  o = o + window.qm_locale.number_format.decimal_point + fraction;
 
 	return o;
 
@@ -51,7 +51,7 @@ var QM_i18n = {
 };
 
 function loadQM() {
-  
+
   $('.qm-filter').on('change', function () {
 	var filter = $(this).attr('data-filter'),
 			table = $(this).closest('table'),
@@ -59,7 +59,7 @@ function loadQM() {
 			val = $(this).val().replace(/[[\]()'"\\]/g, "\\$&"),
 			hilite = $(this).attr('data-highlight'),
 			time = 0;
-			
+
 	if (hilite) {
 	  table.find('tr').removeClass('qm-highlight');
 	}
@@ -219,7 +219,7 @@ function loadQM() {
 		  }
 
 		  var data = this.data_matrix;
-		  
+
 		  data.sort(function (a, b) {
 			if (a.data[index] === b.data[index]) {
 			  return 0;
