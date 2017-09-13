@@ -6,7 +6,6 @@
   "icons": {
     "48": "icon.png"
   },
-
   "background": {
     "scripts": [
       "devtools/background.js"
