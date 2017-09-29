@@ -1,0 +1,22 @@
+{
+  "name": "wp-query-monitor",
+  "version": "1.0.0",
+  "description": "[QueryMonitor](https://wordpress.org/plugins/query-monitor/) is a cool plugin for WordPress developers but can be more comfortable on the developer tools of the browsers!   This extension take the output of the plugin in the page inside the DevTools to let you to move in a second window!   Also implement new features like the saving of filters!",
+  "dependencies": {},
+  "devDependencies": {
+    "jshint": "^2.9.5"
+  },
+  "scripts": {
+    "test": "jshint devtools/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mte90/WP-Query-Monitor.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Mte90/WP-Query-Monitor/issues"
+  },
+  "homepage": "https://github.com/Mte90/WP-Query-Monitor#readme"
+}
