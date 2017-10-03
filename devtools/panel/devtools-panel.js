@@ -13,7 +13,7 @@ jQuery(function ($) {
   var port = browser.runtime.connect({name: "wpquery"});
   port.onMessage.addListener(function (request, sender) {
 	if (request.type === "qm-div" && request.html !== '') {
-	  document.querySelector('#qm').innerHTML = DOMPurify.sanitize(request.html, {ADD_ATTR: ['row']});;
+	  document.querySelector('#qm').innerHTML = DOMPurify.sanitize(request.html, {ADD_ATTR: ['row']});
 	  retrieveWindowVariables();
 	}
   });
