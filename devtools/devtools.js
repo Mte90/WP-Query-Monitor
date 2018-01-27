@@ -3,6 +3,6 @@
  */
 browser.devtools.panels.create(
 		"WP Query Monitor",
-		"toast.png",
-		"devtools/panel/panel.html"
+		"icon.png",
+		"/devtools/panel/panel.html"
 );
