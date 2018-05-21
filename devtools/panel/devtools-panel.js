@@ -1,20 +1,13 @@
 jQuery(function ($) {
-  // Get the QM var inside the dev tools
-  function retrieveWindowVariables() {
-	browser.devtools.inspectedWindow.eval("document.querySelector('body').getAttribute('tmp_0')").then(function (qm_vars) {
-	  window.qm = JSON.parse(qm_vars[0]);
-	});
-	browser.devtools.inspectedWindow.eval("document.querySelector('body').getAttribute('tmp_1')").then(function (qm_vars) {
-	  window.qm_locale = JSON.parse(qm_vars[0]);
-	  loadQM();
-	});
-  }
   // Inject the HTML in the panel
   var port = browser.runtime.connect({name: "wpquery"});
   port.onMessage.addListener(function (request, sender) {
 	if (request.type === "qm-div" && request.html !== '') {
 	  document.querySelector('#qm').innerHTML = DOMPurify.sanitize(request.html, {ADD_ATTR: ['row']});
-	  retrieveWindowVariables();
+	  document.querySelector('.qm-js').id = 'query-monitor';
+	  document.querySelector('.qm-js').style = '';
+	  document.querySelector('.qm-js').className = ' qm-show';
+	  qm_load();
 	}
   });
   // Ask again to stuff
