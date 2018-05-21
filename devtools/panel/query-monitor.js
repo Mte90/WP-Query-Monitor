@@ -276,10 +276,6 @@ function qm_load() {
 
 		errors = parseInt(errors, 10);
 
-		if (window.console) {
-		  console.group(qm_l10n.ajax_error);
-		}
-
 		for (var key = 1; key <= errors; key++) {
 
 		  error = $.parseJSON(response.getResponseHeader('X-QM-php_errors-error-' + key));
@@ -307,27 +303,6 @@ function qm_load() {
 
 		return event;
 
-	  });
-
-	  $('.qm-auth').on('click', function (e) {
-		var action = $(this).data('action');
-
-		$.ajax(qm_l10n.ajaxurl, {
-		  type: 'POST',
-		  data: {
-			action: 'qm_auth_' + action,
-			nonce: qm_l10n.auth_nonce[action]
-		  },
-		  success: function (response) {
-			alert(response.data);
-		  },
-		  dataType: 'json',
-		  xhrFields: {
-			withCredentials: true
-		  }
-		});
-
-		e.preventDefault();
 	  });
 
 	  $.qm.tableSort({target: $('.qm-sortable')});
