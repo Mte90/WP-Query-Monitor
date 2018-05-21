@@ -15,7 +15,7 @@
 
 function qm_load() {
 
-  var qm_number_format = {"thousands_sep":",","decimal_point":"."};
+  var qm_number_format = {"thousands_sep": ",", "decimal_point": "."};
   var QM_i18n = {
 
 	// http://core.trac.wordpress.org/ticket/20491
@@ -215,6 +215,33 @@ function qm_load() {
 		  }
 		  $(this).val(value).change();
 		}
+	  });
+
+	  $('#query-monitor').find('.qm-toggle').on('click', function (e) {
+		var el = $(this);
+		var currentState = el.attr('aria-expanded');
+		var newState = 'true';
+		if (currentState === 'true') {
+		  newState = 'false';
+		}
+		el.attr('aria-expanded', newState);
+		var toggle = $(this).closest('td').find('.qm-toggled');
+		if (currentState === 'true') {
+		  if (toggle.length) {
+			toggle.slideToggle(200, function () {
+			  el.closest('td').removeClass('qm-toggled-on');
+			  el.text(el.attr('data-on'));
+			});
+		  } else {
+			el.closest('td').removeClass('qm-toggled-on');
+			el.text(el.attr('data-on'));
+		  }
+		} else {
+		  el.closest('td').addClass('qm-toggled-on');
+		  el.text(el.attr('data-off'));
+		  toggle.slideToggle(200);
+		}
+		e.preventDefault();
 	  });
 
 	  $('#query-monitor').find('.qm-highlighter').on('mouseenter', function (e) {

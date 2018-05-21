@@ -94,62 +94,7 @@ GNU General Public License for more details.
 }
 
 #qm-title {
-	background: #f3f3f3 !important;
-	border-bottom: 1px solid #aaa !important;
-	align-items:  center;
-	display: flex !important;
-	padding: 0 2px 0 5px !important;
-	height: 27px !important;
-	flex-shrink: 0;
-}
-
-#qm-title .qm-title-heading {
-	flex-grow: 1;
-	border-right: 1px solid #bbb !important;
-	margin-right: 8px !important;
-}
-
-#qm-title div.qm-title-heading {
-	display: none;
-}
-
-#qm-title .qm-title-button {
-	flex-shrink: 0;
-}
-
-#qm-title .dashicons {
-	transition: none !important;
-}
-
-#qm-title .qm-button-container-settings .dashicons,
-#qm-title .qm-button-container-pin .dashicons {
-	font-size: 17px !important;
-	margin-top: 3px !important;
-}
-
-#qm-title button {
-	color: #777 !important;
-	cursor: pointer !important;
-	margin: 0 0 0 0px !important;
-	display: inline-block !important;
-	padding: 0px 2px !important;
-}
-
-#qm-title button:focus,
-#qm-title button:hover {
-	color: #000 !important;
-}
-
-#qm-title button.qm-button-active {
-	color: #3879d9 !important;
-}
-
-#qm-title .qm-button-container-pin.qm-button-active .dashicons {
-	transform: rotate( -45deg ) !important;
-}
-
-#qm-title .qm-button-container-pin.qm-button-active .dashicons:before {
-	margin-left: 2px !important;
+	display: none !important;
 }
 
 #query-monitor .qm {
